@@ -126,11 +126,7 @@ export class ShopApp extends React.Component<
           <div className={styles.buttonWrapper}>
             <span role="button">
                <Button
-                  onClick={function (this: any) {
-                     this.setState({
-                        isOpen: true,
-                     });
-                  }.bind(this)}
+                  onClick={() => this.setState({isOpen:true})}
                >Send product proposal</Button>
             </span>
              {this.state.isShowingMessage && <div className={styles.messageContainer}>
@@ -156,11 +152,7 @@ export class ShopApp extends React.Component<
               <div className={styles.modalContentHelper}>
                  <div
                     className={styles.modalClose}
-                    onClick={function (this: any) {
-                       this.setState({
-                          isOpen: false,
-                       });
-                    }.bind(this)}
+                    onClick={() => this.setState({isOpen:false})}
                  ><FaTimes /></div>
 
                  <Form
