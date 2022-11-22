@@ -32,12 +32,12 @@ export class ShopApp extends React.Component<
           let updatedProd = rawData[i];
           data.push(updatedProd);
         }
+
+        // Merge multiple setStates into single
         this.setState({
           products: data,
-        });
-        this.setState({
           prodCount: data.length
-        })
+        });
       });
     });
   }
@@ -71,19 +71,15 @@ export class ShopApp extends React.Component<
       price: payload.price
     });
 
+    // Merge multiple setStates into single
+
     this.setState({
       products: updated,
-      prodCount: lodash.size(this.state.products) + 1
-    });
-
-    this.setState({
+      prodCount: lodash.size(this.state.products) + 1,
       isOpen: false,
-    });
-
-    this.setState({
       isShowingMessage: true,
       message: 'Adding product...'
-    })
+    });
 
     // **this POST request doesn't actually post anything to any database**
     fetch('https://fakestoreapi.com/products',{
