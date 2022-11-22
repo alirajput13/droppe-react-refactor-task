@@ -17,9 +17,6 @@ export class ShopApp extends React.Component<
   constructor(props: any) {
     super(props);
 
-    this.favClick = this.favClick.bind(this);
-    this.onSubmit = this.onSubmit.bind(this);
-
     this.state = { products: [], isOpen: false, isShowingMessage: false, message: '', numFavorites: 0, prodCount: 0 };
 
     fetch('https://fakestoreapi.com/products').then((response) => {
@@ -147,7 +144,7 @@ export class ShopApp extends React.Component<
             <span>Number of favorites: {this.state.numFavorites}</span>
           </div>
 
-          {products && !!products.length ? <ProductList products={products} onFav={this.favClick} /> : <div></div>}
+          {products && !!products.length ? <ProductList products={products} onFav={this.favClick.bind(this)} /> : <div></div>}
         </div>
 
         <>
@@ -167,7 +164,7 @@ export class ShopApp extends React.Component<
                  ><FaTimes /></div>
 
                  <Form
-                    on-submit={this.onSubmit}
+                    on-submit={this.onSubmit.bind(this)}
                  />
               </div>
            </Modal>
